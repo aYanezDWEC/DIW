@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'myFont'; /*a name to be used later*/
+	src: url("mystery-quest.woff2");
+		color: red;
+}
+
+body{
+    background-image: url("backgroud2.png");
+	font-family: 'myFont';
+}
+
+*{box-sizing:border-box;}
+
+form{
+    margin-top: 100px;
+	width:340px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:#faf2f0A6;
+}
+
+form label{
+	width:72px;
+	font-weight:bold;
+	display:inline-block;
+}
+
+form input[type="text"], form input[type="email"], form input[type="password"], form input[type="tel"]{
+	width:100%;
+	padding:3px 10px;
+	border:1px solid #faf2f0;
+	border-radius:3px;
+	background-color:#faf2f0;
+	margin:8px 0;
+}
+
+form input[type="tel"]{
+	width: 234px;
+	padding:3px 10px;
+	border:1px solid #faf2f0;
+	border-radius:3px;
+	background-color:#faf2f0;
+	margin:8px 0;
+}
+
+/* prefijos numero de telefono */
+select{ 
+    width: 70px;
+	padding:3px 10px;
+	border:1px solid #faf2f0;
+	border-radius:3px;
+	background-color:#faf2f0;
+	margin:8px 0;
+}
+
+form input[type="submit"], form input[type="reset"]    {
+	width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #1A2954;
+	border-radius:5px;
+	display:block;
+	color:#faf2f0;
+	background-color:#1A2954;
+} 
+
+
+
+
+
+[type = "radio"]{
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+[name="avatar_img"]{
+	opacity: 0.50;
+}
+
+[name="avatar_img"]:hover{
+	opacity: 1;
+}
+
+#avatar1:checked~label>#avatar_img1{
+	opacity: 1;
+}
+
+
+#avatar2:checked~label>#avatar_img2{
+	opacity: 1;
+}
+
+#avatar3:checked~label>#avatar_img3{
+	opacity: 1;
+}
+
+
+img[src="avatar1.png"],
+img[src="avatar2.png"],
+img[src="avatar3.png"] {
+    width: 95px;
+    height: 95px;
+   
+}
