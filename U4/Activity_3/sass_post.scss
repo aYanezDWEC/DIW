@@ -1,4 +1,3 @@
-
 $orange: #F5900C;
 $blue:  #1A2954;
 $pink_backgroud: #FAF2F0;
@@ -27,11 +26,11 @@ body {
   }
 
   
-  footer{
+  footer{ /*el footer hereda los estilos del nav */
     @extend nav;
   }
 
-  .nav{
+  .nav{ /* Anidacion */ 
     
     button{
         font-family: sans-serif;

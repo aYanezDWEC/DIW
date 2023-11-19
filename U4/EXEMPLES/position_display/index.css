@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header, footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+main {
+  position: relative;
+}
+
+aside {
+  background-color: #f4f4f4;
+  position: static;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+}
+
+.product-grid {
+  margin-left: 0px; 
+  padding: 20px;
+}
+
+.product-card {
+  width: 200px;
+  height: 300px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  margin: 0 20px 20px 0;
+  display: inline-block;
+}
+
+@media (min-width: 600px) {
+  /* Apply styles for screens wider than 600px */
+  aside {
+    width: 200px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .product-grid {
+    margin-left: 220px; 
+  }
+}

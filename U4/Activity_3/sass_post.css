@@ -17,6 +17,14 @@ nav, footer {
   padding: 20px;
 }
 
+footer {
+  /*el footer hereda los estilos del nav */
+}
+
+.nav {
+  /* Anidacion */
+}
+
 .nav button {
   font-family: sans-serif;
 }

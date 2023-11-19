@@ -1,0 +1,135 @@
+*{margin: 0; padding: 0;} /* Quitamos los margins y los padding que hay por defecto */
+
+header{ /* Centramos todo el contenido del header */
+    text-align: center;
+}
+
+footer{ /* Ponemos un color de fondo y centramos el contenido del footer */
+    background-color: rgb(214, 213, 210);
+    text-align: center;
+}
+
+body{ /* Cambiamos el estilo de la fuente por toda la pagina*/
+    font-family: "Gil-Sans", sans-serif;
+}
+
+
+.logo{ /* La imagen está centrada porque es parte del footer por lo que no hace falta volver a centrarla*/
+    width: 80px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+a{ /* Quitar el efecto de "link" */
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    a{ /* Quitar el efecto de "link" */
+        text-decoration: none;
+        color: black;
+    }
+}
+
+ul { 
+    list-style-type: none; /* LLevem el "puntets" de la llista desordana */
+}
+
+.menu-elements{ 
+    text-align: center; /* centrammos los elementos del <ul>*/
+    display: inline-block;
+}
+
+.menu-element{ 
+    display: inline-block; /* Ponemos los elementos <li> en linea en vez de uno debajo de otro */
+    padding-left: 10px; 
+    padding-right: 10px;  
+}
+
+.search{
+    position: relative;
+    padding: 10px;
+}
+
+#products-filter{
+    background-color: rgb(214, 213, 210);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.menu2-element{
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+}    
+
+.list-group{
+    margin: 30px 0px 30px 0px;
+    text-align: center;
+}
+
+article{ /* Ponemos los elementos "article" en línea segúnsu tamaño se ven mas o menos, los que quepan*/
+    display: inline-block;
+}
+
+section{
+    margin-top: 10px;
+}
+
+#load-more-products{
+    margin: 30px 0px 30px 0px;
+    text-align: center;
+}
+
+#back-to-top{
+    position: fixed;
+    bottom: 45px;
+    right: 10px;
+}
+
+span{
+    display: block;
+}
+
+.product-name{
+    font-weight: bold;
+}
+
+
+
+
+@media (min-width: 600px) {
+    main {
+        position: relative;
+    }
+    
+    aside {
+        position: absolute;
+        width: 200px; 
+        padding: 20px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+    section{
+        margin-left: 220px;
+    }
+
+    .menu2-element{
+        display: block;
+        text-align: left;
+    }
+
+    .list-group{
+        text-align: start;
+    }
+
+    .search{
+        position: absolute;
+        display:inline-block;
+        right: 15px; /* Para ponerlo a la derecha */
+    }
+}
