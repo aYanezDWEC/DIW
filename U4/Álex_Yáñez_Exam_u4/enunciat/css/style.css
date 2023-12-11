@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'myFont';
+  src: url("../fonts/VarelaRound-Regular.ttf");
+}
+
+/* The body*/
+body {
+  font-family: 'myFont', sans-serif;
+}
+
+body a {
+  text-decoration: none;
+  color: black;
+}
+
+body ul {
+  list-style-type: none;
+}
+
+/* header*/
+header {
+  background-color: #05a081;
+  text-align: center;
+  width: 100%;
+  box-shadow: 5px 5px 10px #ccc;
+}
+
+/* The image "logo" from the top part*/
+div > img {
+  position: relative;
+  width: 100px;
+  animation-name: bici;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bici {
+  0% {
+    left: -50%;
+    top: 0px;
+  }
+  100% {
+    left: 1%;
+    top: 0px;
+  }
+}
+
+.menu ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.menu ul li a {
+  color: #413e41;
+}
+
+.menu ul li a:hover {
+  color: black;
+}
+
+/* The "main" */
+img {
+  max-width: 100%;
+}
+
+figure {
+  border: 1px solid #ccc;
+  margin: 10px;
+  max-width: 100%;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+figure > a:hover {
+  opacity: 0.5;
+}
+
+footer {
+  background-color: #05a081;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 10px 10px 10px #ccc;
+}
+
+footer a {
+  color: #413e41;
+}
+
+aside {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  figure {
+    display: inline-block;
+    width: 45%;
+  }
+  aside {
+    display: inline;
+    text-align: center;
+  }
+  aside nav {
+    background-color: #ccc;
+    box-shadow: 10px 10px 10px #ccc;
+  }
+}
