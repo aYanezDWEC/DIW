@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    text-align: center;
+    background-color: rgb(51, 51, 51);
+}
+
+h1{
+    color: #E2CFEA;
+    font-family: 'Arial', sans-serif;
+}
+
+
+#game_container {
+    height: 510px;
+    width: 500px;
+    background-color: #43a9ed;
+    padding: 20px;
+    margin: auto;
+}
+
+
+.cuadro {
+    width: 115px;
+    height: 115px;
+    background-color: #40298a;
+    display: inline-block;
+    margin: 5px;
+}
+
+p{
+    color: #000000;
+    font-family: 'Arial', sans-serif;
+    font-size: 40px;
+
+}
+
+.revelado {
+    background-color: #40298a;
+}
+
+.oculto {
+    opacity: 0;
+}
+
+

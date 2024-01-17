@@ -1,0 +1,45 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #685F74;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #F2BEFC;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:disabled {
+    background-color: #8e709d;
+    cursor: not-allowed;
+  }
+  
+  label {
+    margin-right: 10px;
+    background-color: rgb(231, 231, 237);
+    padding: 10px;
+    border-radius: 20px;
+  }
+  
+  input {
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  canvas {
+    display: block;
+    margin: 20px auto;
+    background-color: #EAD5E6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  

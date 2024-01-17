@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EXERCICI 3</title> 
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+<body>
+  <main style="text-align: center;">
+
+     <button id="btn_stop" onclick="stopBall()" disabled> STOP </button>    
+    <button id="btn_start" onclick="start()"> START </button> 
+    <br>
+    
+    <label> X SPEED</label>
+    <input type="number" id="x_speed" value="1">
+
+    <label> Y SPEED</label>
+    <input type="number" id="y_speed" value="1">
+
+    <br><br>
+
+    <canvas width="600" height="550" id="2d-animation-canvas" style="border: 1px solid gray;"></canvas>
+
+  </main>
+
+  <script src="script.js"></script> 
+</body>
+</html>

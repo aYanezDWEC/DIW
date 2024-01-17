@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example JQuery Selectors</title>
+  <style>
+    /* Add some styling for demonstration purposes */
+    .highlight {
+      background-color: yellow;
+    }
+
+    .highlight-green{
+      background-color: greenyellow;
+    }
+
+    .highlight-purple{
+      background-color: rgb(112, 112, 211);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <h2>jQuery Selectors Example</h2>
+    <p class="highlight">This paragraph contains the word "example".</p>
+    <ul>
+      <li>Item 1</li>
+      <li class="highlight">Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <ul></ul>
+    <div>
+      <h4>Another header</h4>
+      <span>Some text here</span>
+    </div>
+    <div class="highlight">This div is highlighted.</div>
+    <div style="display: none;">This div was hidden.</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  
+  <script>
+    // jQuery code using various selectors
+
+    // :has() - Select elements that contain at least one element matching the specified selector
+    $('#container:has(.highlight)').css('border', '2px solid red');
+
+    // :contains() - Select elements that contain the specified text
+    // $('p:contains("example")').addClass('highlight-green');
+    // $('p:contains("example")').removeClass('highlight').addClass('highlight-green');
+    // $('p:contains("example")').toggleClass('highlight');
+
+    // :empty - Select elements that have no children (including text nodes)
+    // $('ul:empty').append('<li>No items in this list.</li>').addClass('highlight-green');
+
+    // :parent - Select elements that have at least one child node (including text nodes)
+    // $('div:parent').css('border', '2px solid green');
+
+    // :header - Select header elements (h1, h2, h3, ..., h6)
+    // $(":header").addClass('highlight-purple');
+
+    // :hidden - Select all elements that are hidden
+    // $("div:hidden").addClass('hello').css({
+    //   "display": "block",
+    //   "font-weight": "bold"
+    // });
+
+  </script>
+
+</body>
+</html>
