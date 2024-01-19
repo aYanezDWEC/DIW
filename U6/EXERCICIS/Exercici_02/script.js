@@ -52,22 +52,22 @@ $(document).ready(function() {
                 //Canvi de classe
                 $('.girat').removeClass('girat').addClass('encert');
 
-                if(encerts == numCuadros/2){
-                    alert('Enhorabona has trobat totes les parelles!' + 'Has fet: ' + encerts + ' encerts i ' + errors + ' errors. A continuació es reiniciarà la partida.');
-                    location.reload();
-
-                }
+                setTimeout(function(){
+                    if(encerts == numCuadros/2){
+                        alert('Enhorabona has trobat totes les parelles!' + 'Has fet: ' + encerts + ' encerts i ' + errors + ' errors. A continuació es reiniciarà la partida.');
+                        location.reload();
+                    }
+                }, 1000 );
+                
             //Si no son iguals
             } else {
-                errors++;
-                $('#errores').text(errors);
-                imgSrcArray.splice(0, imgSrcArray.length); //borrem el contigut 
+                setTimeout(function(){
+                    errors++;
+                    $('#errores').text(errors);
+                    imgSrcArray.splice(0, imgSrcArray.length); //borrem el contigut 
 
-                $('.girat').removeClass('girat').addClass('oculto');
-                setTimeout(function() {
-                }, 2000);
-
-                
+                    $('.girat').removeClass('girat').addClass('oculto');
+                }, 1000 );
             }
         } 
 
