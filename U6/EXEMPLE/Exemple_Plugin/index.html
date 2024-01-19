@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery plugin</title>
+</head>
+<body>
+  <form action="#" method="post">
+    <p><label>Nombre</label>
+    <input type="text" name="nombre" class="input" /></p>
+    <p><label>Edad</label>
+    <input type="text" name="edad" class="input" /></p>
+    <p><label>Compra</label>
+    <input type="text" name="compra1" class="input" /></p>
+
+    <p><a href="#" id="morefields">Más campos</a></p>
+    <p><input type="submit" name="send" value="enviar" /></p>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    jQuery.fn.morefields = function(label, name, counter){
+      $(this).each(function(){
+        elem = $(this);
+        elem.data("label", label);
+        elem.data("name",name);
+        elem.data("counter",counter);
+
+        elem.on("click", function(e){
+          e.preventDefault();
+          elem = $(this);
+          label = elem.data("label");
+          name = elem.data("name");
+          counter = elem.data("counter");
+          data = '<p><label>' + label + ' ' + counter + ':</label><input type="text" name="' + name + counter + '" /></p>';
+          counter++;
+          elem.data("counter",counter);
+          newlabel = $(data);
+          elem.before(newlabel);
+        });
+      });
+      return this;
+    }
+    
+    $(document).ready(function(){
+      $("#morefields").morefields("Compra", "compra", 2);
+    });
+    
+  </script>
+</body>
+</html>
