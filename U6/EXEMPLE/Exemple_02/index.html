@@ -4,70 +4,145 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Example JQuery Selectors</title>
+  <title>Example Effects</title>
   <style>
-    /* Add some styling for demonstration purposes */
-    .highlight {
-      background-color: yellow;
-    }
-
-    .highlight-green{
-      background-color: greenyellow;
-    }
-
-    .highlight-purple{
-      background-color: rgb(112, 112, 211);
+    #panel {
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
     }
   </style>
 </head>
-
 <body>
-  <div id="container">
-    <h2>jQuery Selectors Example</h2>
-    <p class="highlight">This paragraph contains the word "example".</p>
-    <ul>
-      <li>Item 1</li>
-      <li class="highlight">Item 2</li>
-      <li>Item 3</li>
-    </ul>
-    <ul></ul>
-    <div>
-      <h4>Another header</h4>
-      <span>Some text here</span>
-    </div>
-    <div class="highlight">This div is highlighted.</div>
-    <div style="display: none;">This div was hidden.</div>
-  </div>
+    <p>Texto</p>
+    <button id="ocultar">Ocultar</button>
+    <button id="mostrar">Mostrar</button>
+    <button id="toggle">Toggle</button>
+    <button id="fadeIn">FadeIn</button>
+    <button id="fadeOut">FadeOut</button>
+    <button id="fadeToggle">fadeToggle</button>
+    <button id="fadeTo">fadeTo</button>
+    <button id="slideDown">SlideDown</button>
+    <button id="slideUp">SlideUp</button>
+    <button id="slideToggle">SlideToggle</button>
+    <button id="animar">Animación</button>
+    <button id="pararAnimar">Parar animación</button>
+    <button id="callback">Prueba Callback</button>
+    <button id="encadenar">Prueba encadenar</button>
+    <div id="div1" style="width:80px;height:80px;background-color:red;">¡Hola!</div>
+    <br>
+    <div id="div2" style="width:80px;height:80px;background-color:green;"></div>
+    <br>
+    <div id="div3" style="width:80px;height:80px;background-color:blue;"></div>
+    <div id="flip">Pulsa para bajar la persiana</div>
+    <div id="panel">¡Hola, mundo!</div>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script>
-    // jQuery code using various selectors
+    $(document).ready(inicio);
 
-    // :has() - Select elements that contain at least one element matching the specified selector
-    $('#container:has(.highlight)').css('border', '2px solid red');
+    function inicio() {
+      //Sintaxis de efectos y animaciones
+      //$(selector).efecto(velocidad) //"slow", "fast", nº de ms
+      //jQuery.fx.speeds
+      jQuery.fx.speeds.myRapido = 50;
 
-    // :contains() - Select elements that contain the specified text
-    // $('p:contains("example")').addClass('highlight-green');
-    // $('p:contains("example")').removeClass('highlight').addClass('highlight-green');
-    // $('p:contains("example")').toggleClass('highlight');
+      //Ocultar
+      $("#ocultar").on("click", function () {
+        //$("p").hide();
+        $("p").hide(1500);
+      });
+      //Mostrar
+      $("#mostrar").on("click", function () {
+        $("p").show("fast");
+      });
+      //Toggle
+      $("#toggle").on("click", function () {
+        $("p").toggle();
+      });
+      //***************************
+      //fadeIn
+      $("#fadeIn").on("click", function () {
+        $("#div1").fadeIn();
+        $("#div2").fadeIn("slow");
+        $("#div3").fadeIn(3000);
+      });
+      //fadeOut
+      $("#fadeOut").on("click", function () {
+        $("#div1").fadeOut();
+        $("#div2").fadeOut("slow");
+        $("#div3").fadeOut(3000);
+      });
+      //fadeToggle
+      $("#fadeToggle").on("click", function () {
+        $("#div1").fadeToggle();
+        $("#div2").fadeToggle("slow");
+        $("#div3").fadeToggle(3000);
+      });
+      //fadeTo
+      $("#fadeTo").on("click", function () {
+        $("#div1").fadeTo("slow", 0.15);
+        $("#div2").fadeTo("slow", 0.5);
+        $("#div3").fadeTo("slow", 0.8);
+      });
 
-    // :empty - Select elements that have no children (including text nodes)
-    // $('ul:empty').append('<li>No items in this list.</li>').addClass('highlight-green');
+      //***************************
+      //slideDown
+      $("#slideDown").on("click", function () {
+        $("#panel").slideDown();
+      });
+      //slideUp
+      $("#slideUp").on("click", function () {
+        $("#panel").slideUp();
+      });
+      //slideToggle
+      $("#slideToggle").on("click", function () {
+        $("#panel").slideToggle();
+      });
 
-    // :parent - Select elements that have at least one child node (including text nodes)
-    // $('div:parent').css('border', '2px solid green');
+      //ANIMACIONES **************************
+      //$(selector).animate({parametros},velocidad,function_callback);
+      $("#animar").on("click", function () {
+        $("#div1").animate({
+          left: '250px',
+          opacity: '0.5',
+          height: '150px',
+          width: '200px'
+        });
+        //.delay(ms): introducir un retardo
+        $("#div1").delay(2000);
+        //$("#div1").delay(2000).animate({...});
+        $("#div1").animate({
+          height: '100px',
+          width: '100px',
+          opacity: '1'
+        }, "slow");
+        $("#div1").animate({
+          fontSize: '+=10'
+        }, 2000);
+      });
 
-    // :header - Select header elements (h1, h2, h3, ..., h6)
-    // $(":header").addClass('highlight-purple');
+      //Parar una animación
+      //$(selector).stop(stopAll, goToEnd);
+      $("#pararAnimar").on("click", function () {
+        $("#div1").stop(true, true);
+      });
 
-    // :hidden - Select all elements that are hidden
-    // $("div:hidden").addClass('hello').css({
-    //   "display": "block",
-    //   "font-weight": "bold"
-    // });
+      //Funciones callback
+      $("#callback").on("click", function () {
+        $("p").hide(1000, function () {
+          alert("El párrafo ha sido ocultado");
+        });
+      });
+      /*$("#callback").on("click", function () {
+        $("p").hide(1000);
+        alert("El párrafo ha sido ocultado");
+      });*/
 
-  </script>
-
+      //Encadenamiento de efectos
+      $("#encadenar").on("click", function () {
+        $("p").css("color", "green").hide(2000).delay(500).show(2000);
+      });
+    }
+    </script>    
 </body>
 </html>

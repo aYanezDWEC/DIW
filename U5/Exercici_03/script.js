@@ -6,9 +6,6 @@ var btnStop = document.getElementById('btn_stop');
 var x_speed = document.getElementById('x_speed');
 var y_speed = document.getElementById('y_speed');
 
-
-
-
 function start() {
     directionX = parseInt(x_speed.value);
     directionY = parseInt(y_speed.value);
@@ -23,14 +20,8 @@ function stopBall() {
     btnStart.disabled = false;
 }
 
-
-
-
-
 canvas = document.getElementById('2d-animation-canvas');
 context = canvas.getContext('2d');
-
-
 
 function draw(x, y) {
     context.fillStyle = "#02A9EA";
@@ -39,12 +30,9 @@ function draw(x, y) {
     context.fill();
   }
 
-
-
 function clearCanvas() {
     canvas.width = canvas.width;
-  }
-  
+  } 
 
 var ballX = 300;
 var ballY = 225;

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICI 04</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>TASK LIST</h1>
+      <!-- <div class="post-it">
+         <div class="header_post_it">
+            <button><img src="icons/minimize.png" height="15px" width="15px"> </button>
+            <button><img src="icons/close.png" height="15px" width="15px"> </button>
+         </div>
+            <div class="body_post_it">
+                <textarea name="text" id="" cols="20" rows="10" placeholder="What you have to do?"></textarea>
+        </div>
+    </div> -->
+
+
+    <div class="container">
+        <button class="generador"> CREATE A POST-IT </button>
+    
+        <div class="task_container container_red">
+            <h2> NOT STARTED (<span class="counter" id="id_not_started">0</span>)</h2>
+        </div>
+        <div class="task_container container_blue">
+            <h2> IN PROGRESS (<span class="counter">0</span>)</h2>
+        </div>
+        <div class="task_container container_green">
+            <h2> DONE (<span class="counter">0</span>)</h2>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
