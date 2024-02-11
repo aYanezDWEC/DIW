@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post-its con jQuery y jQueryUI</title>
+    <style>
+        .post-it {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: absolute;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .post-it .close, .post-it .min-max {
+            position: absolute;
+            top: 5px;
+            cursor: pointer;
+        }
+        .post-it .close {
+            right: 5px;
+        }
+        .post-it .min-max {
+            right: 25px;
+        }
+        .post-it.minimized {
+            width: 50px;
+            height: 50px;
+        }
+        .contenedor {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            position: relative;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+</head>
+<body>
+    <button id="crearPostIt">Crear Post-it</button>
+    <div class="contenedor color-rojo">
+        <span class="contador">0</span>
+    </div>
+    <div class="contenedor color-azul">
+        <span class="contador">0</span>
+    </div>
+    <div id="dialog-confirm" title="¿Eliminar Post-it?" style="display:none;">
+        <p>¿Estás seguro de que quieres eliminar este Post-it?</p>
+    </div>
+    <script>
+        $(function() {
+    // Crear post-its
+    $("#crearPostIt").click(function() {
+        var nuevoPostIt = $('<div class="post-it draggable resizable"><span class="close">X</span><span class="min-max">-</span><div class="contenido"></div></div>');
+        $("body").append(nuevoPostIt);
+        nuevoPostIt.draggable();
+        nuevoPostIt.resizable();
+    });
+
+    // Eliminar post-its
+    $(document).on('click', '.close', function() {
+        var postIt = $(this).parent();
+        $("#dialog-confirm").dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+                "Borrar": function() {
+                    $(this).dialog("close");
+                    postIt.remove();
+                },
+                Cancelar: function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    });
+
+    // Minimizar/maximizar post-its
+    $(document).on('click', '.min-max', function() {
+        var postIt = $(this).parent();
+        postIt.toggleClass("minimized");
+        if (postIt.hasClass("minimized")) {
+            $(this).text("+");
+        } else {
+            $(this).text("-");
+        }
+    });
+
+    // Hacer contenedores aceptables
+    $(".contenedor").droppable({
+        accept: function(item) {
+            return $(this).hasClass(item.attr("data-color"));
+        },
+        drop: function(event, ui) {
+            var numPostIts = $(this).children(".post-it").length;
+            $(this).find(".contador").text(numPostIts);
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    background-color: #191414;
+    color: #efefef;
+    font-family: 'Montserrat', Arial, sans-serif;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 20px;
+    text-align: center;
+}
+
+
+#logo{
+    max-width: 600px;
+}
+
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+#search_area {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    color: #1ED760;
+    margin-bottom: 20px;
+    font-size: 43px;
+}
+
+.button, button {
+    background-color: #4F345A;
+    border: none;
+    color: #F7F7F7;
+    padding: 12px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.search {
+    width: 200px;
+    padding: 10px;
+    background-color: #efefef;
+    border: 1px solid #F7F7F7;
+    margin: 10px 0;
+    border-radius: 50px;
+}
+
+
+#artist_img{
+    max-width: 320px;
+    max-width: 320px;
+    margin-top: 20px;
+    border-radius: 100%;
+    width: 300px;
+}
+
+
+.artist_button{
+    background-color: #4F345A;
+    border: none;
+    color: #F7F7F7;
+    padding: 10px 27px;
+    text-align: center;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+  
+#container_artist{
+    padding: 20px;
+}
+
+#container_trak {
+    /* border: 1px solid rgb(102, 0, 255); */
+    display: inline;
+    padding: 20px;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #191414;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #191414;
+}
+
+#artist_title {
+    text-align: left;
+    margin-left: 20px;
+}
+  
+  #artist_img_info {
+    display: flex;
+    border-radius: 100%;
+    max-width: 400px;
+    margin-left: 100px;
+  }
+
+#artist_title_info {
+    display: flex;
+}
+
+#artist_info {
+    margin-right: 20px; /* Ajusta el margen entre la imagen del artista y los álbumes */
+}
+
+#artist_albums {
+    flex-grow: 1; /* Permite que los álbumes ocupen todo el espacio restante */
+}

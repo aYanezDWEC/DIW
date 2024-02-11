@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-it Simulation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container" id="container-not-started">
+  <h2>Not Started</h2>
+  <div class="task-container" id="not-started" data-color="yellow">
+    <div class="counter">0</div>
+  </div>
+</div>
+
+<div class="container" id="container-in-progress">
+  <h2>In Progress</h2>
+  <div class="task-container" id="in-progress" data-color="blue">
+    <div class="counter">0</div>
+  </div>
+</div>
+
+<button class="generador">Create Post-it</button>
+
+<div id="dialog-confirm" title="Delete Post-it">
+  <p>Are you sure you want to delete this post-it?</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

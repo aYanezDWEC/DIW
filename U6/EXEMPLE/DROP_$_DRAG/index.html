@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and drop</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+  <style>
+    .blue{
+      background-color: blue;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+    }
+    .red{
+      background-color: red;
+      width: 20px;
+      height: 20px;
+      position: absolute
+    }
+    .drop {
+      padding: 10px;
+      border: 1px solid #ddd;
+      width: 200px;
+      height: 600px;
+      float: right;
+      text-align: center;
+      margin: 10px;
+    }
+    #dropRed{
+      background-color: #f99;
+    }
+    #dropBlue{
+      background-color: #99f;
+    }
+  </style>
+</head>
+<body>
+  <button class="newElement">New item</button>
+
+  <!--There are 4 elements at the beggining-->
+  <div class="blue draggable" style="top: 140px; left: 150px;"></div> 
+  <div class="red draggable" style="top: 98px; left: 100px;"></div> 
+  <div class="red draggable" style="top: 120px; left: 180px;"></div> 
+  <div class="blue draggable" style="top: 120px; left: 90px;"></div> 
+
+  <!--I create 2 containers with the same class drop-->
+  <div id="dropRed" class="drop"> 
+    Drop red elements here 
+  </div> 
+  <div id="dropBlue" class="drop"> 
+    Drop blue elements here
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+ 
+  <script>
+    //Definition of colours
+    var colours = ["blue", "red"];
+  
+    //Function to get a random position
+    function getRandomPosition(inferior,superior){
+      var possibilities = superior - inferior;
+      var random = Math.random() * possibilities;
+      random = Math.floor(random);
+      return parseInt(inferior) + random;
+    }
+
+    //Function to get a random colour (in case we add a new colour and container)
+    function getRandomColour(){
+      var possibilities = colours.length;
+      var random = Math.random() * possibilities;
+      random = Math.floor(random);
+      return colours[random];
+    }
+
+    //Function to prevent the body to become wider when draggable elements move to the right
+    function limitDraggablePosition(ui, element){
+      var leftPos = ui.position.left; // Left position of the element
+        var windowWidth = $(window).width(); // Width of the window browser
+        var elementWidth = element.outerWidth(); // Width of the draggable element
+
+        // Limits movement to the right to prevent the body from becoming wider.
+        if (leftPos + elementWidth > windowWidth) {
+          // Sets the maximum left position to prevent the element from leaving the window.
+          ui.position.left = windowWidth - elementWidth;
+        }
+    }
+
+    $(document).ready(function(){
+
+      /* Adding draggable property to the elements and initializing dropped variable to false 
+      in order to check whether or not it has been dropped to the correct container */
+      $(".draggable").draggable({
+        drag: function(event, ui) {
+          limitDraggablePosition(ui, $(this));
+        }
+      });      
+
+      $(".draggable").data("dropped", false);
+      
+      // Variable to count the elements I am dropping
+      $(".drop").data("counter", 0);
+
+      //I assign the droppable functionality to the two containers with a single class, not per id
+      $(".drop").droppable({ 
+        drop: function( event, ui ) { 
+          // console.log(ui);
+          //Checking if the element hasn't been dropped in the container in order 
+          //to set the variable to true and update the internal container counter (add 1).
+          if (!ui.draggable.data("dropped")){ 
+            ui.draggable.data("dropped", true); 
+            var elem = $(this); 
+            elem.data("counter", elem.data("counter") + 1) 
+            elem.html("I have " + elem.data("counter") + " item/s dropped"); 
+          } 
+        }, 
+        out: function( event, ui ) { 
+          // Checking if the element was dropped to update the same variables as before
+          if (ui.draggable.data("dropped")){ 
+            ui.draggable.data("dropped", false); 
+            var elem = $(this); 
+            elem.data("counter", elem.data("counter") - 1); 
+            elem.html("I have " + elem.data("counter") + " item/s dropped"); 
+          } 
+        } 
+      });
+
+      // To let drop only red elements
+      $("#dropRed").droppable("option", "accept", ".red"); 
+      // To let drop only blue elements
+      $("#dropBlue").droppable("option", "accept", ".blue");
+
+      // Event to create blue or red elements 
+      $(".newElement").click(function(e){ 
+        e.preventDefault(); 
+        var posx = getRandomPosition(10, 500); 
+        var posy = getRandomPosition(80, 200); 
+        var color = getRandomColour();
+        var newElement = $('<div class="' + color + ' draggable" style="top: ' + posy + 'px; left: ' + posx + 'px;"></div>'); 
+        
+        newElement.draggable({
+          drag: function(event, ui) {
+            limitDraggablePosition(ui, $(this));
+          }
+        });  
+        $(document.body).append(newElement); 
+      });
+
+    });
+  </script>
+</body>
+</html>
