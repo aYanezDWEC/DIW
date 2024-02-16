@@ -1,21 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
-    <title>EXERCICI 01 </title>
+  <title> EXERCICI 01</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  
 </head>
-<body>
 
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
 
 
     <div id="app">
-        <p>{{ name }} </p>
+        <h1>NEW POST</h1>
+      
+            <label for="name">Title: </label>
+            <input id="title" v-model="form.title" type="text" name="title" placeholder="Enter your title" />
+        
+            <label for="summary" >Brief summary: </label>
+            <textarea id="summary" v-model="form.summary" name="summary" maxlength="50" placeholder="50 characters max"></textarea>
+
+            <label for="content" >Content:: </label>
+            <textarea id="content" v-model="form.content" name="conttent" placeholder="Write your history..."></textarea>
+         
+            <label for="author">Author:</label>
+            <select id="author" v-model="form.author" name="author">
+              <option value="Fernando Alonso">Fernando Alonso</option>
+              <option value="Giannis Antetokounmpo">Giannis Antetokounmpo</option>
+              <option value="Shai Gilgeous-Alexander">Shai Gilgeous-Alexander</option>
+              <option value="Willirex"> Willirex </option>
+              <option value="Anonymous"> Anonymous </option>
+             
+            </select>
+
+            <label for="image">Image:</label>
+            <input type="file" ref="fileInput" id="image" @change="handleFileChange"><br>
+
+            
+            <button @click="sendForm" class="btn_send">Send</button>
+            <button @click="editPost" hidden>Send</button>
+         
+            <div v-for="(post, index) in posts" :key="index">
+              <h3>{{ post.title }}</h3>
+              <p><strong>Summary:</strong> {{ post.summary }}</p>
+              <p><strong>Content:</strong> {{ post.content }}</p>
+              <p><strong>Author:</strong> {{ post.author }}</p>
+              <p><strong>Image:</strong> {{ post.image }}</p>
+              <p><strong>Date:</strong> {{ post.date }}</p>
+              <p><button class="btn_delete" v-on:click = 'deletePost(index)'> DELETE </button>
+              <button class="btn_edit" v-on:click = 'editPost(post, index)'> EDIT </button></p>
+            </div>
+        </div>
     </div>
 
-      
 
+
+    
+    
     <script src="script.js"></script>
-</body>
+
+
+  </body>
 </html>
