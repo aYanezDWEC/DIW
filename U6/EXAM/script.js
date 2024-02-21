@@ -42,20 +42,22 @@ $.fn.isCapitalLetterValid = function() {
             $('#name_error').html('Name must start with a capital letter');
         }
     });
+    
+
+
+    $(document).ready(function(){
+        $('#email').isEmailValid();
+        $('#name').isCapitalLetterValid();
+    });
+    
+    //Quan pitjem el botó d'enviar volem que paregui un desplegable amb el nom i el correu
+    $("#submit").on("click", function() {
+        console.log(nameSelectItem);
+        $('#select').html('<select name="" id=""></select>');
+    
+        
+    })
+
     return this;
 }
-
-$(document).ready(function(){
-    $('#email').isEmailValid();
-    $('#name').isCapitalLetterValid();
-});
-
-//Quan pitjem el botó d'enviar volem que paregui un desplegable amb el nom i el correu
-$("#submit").on("click", function() {
-    console.log(nameSelectItem);
-    $('#select').html('<select name="" id=""></select>');
-
-    
-})
-
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici 2</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+</head>
+<body>
+    <div id="app">
+        <h3>Enter an integer</h3>
+        <input v-model="num" type="number">
+        <input type="button" value="SEND" v-on:click="send()">
+        <p v-if="error">
+            <small >{{ error }}</small>
+        </p >
+
+        <Number v-for="n in numbers" :nombre="n" :key="n" v-on:clicked-number="numberSelected"></Number>
+
+        <p v-if="selectedItem">
+            <span>The number pressed is {{ selectedItem}}</span>
+        </p >
+    </div>
+
+    <script type="module">
+        import Number from "./Number.js";
+
+        const { createApp } = Vue;
+        const app = createApp({
+            data: function(){
+                return{
+                    num: null,
+                    numbers: [],
+                    error: "",
+                    selectedItem: null
+                }
+            },
+            components:{
+                Number
+            },
+            methods: {
+                send: function(){
+                    this.error = "";
+                    this.selectedItem = "";
+                    // console.log('okdix');
+                    //Eliminar decimals i comprovar si és igual al valor entrat
+                    // si s'entra en un string o retorna 0
+                    if(~~this.num === this.num){
+                        //Comprovar si existeix aquest nombre a l'array/llistax
+                        if(this.numbers.indexOf(this.num)<0){
+                            this.numbers.push(this.num);
+                        } else {
+                            this.error = "You can't repeat numbers."
+                        }
+                    } else{
+                        this.error = "You need top enter a correct value.";
+                    }
+                },
+                numberSelected: function(item){
+                    console.log(item);
+                    this.selectedItem = item;
+                }
+            }
+            
+        }).mount("#app");
+    </script>
+
+
+<style>
+    body{
+        text-align: center;
+    }
+    
+    small{
+        color: red;
+    }
+</style>
+</body>
+</html>

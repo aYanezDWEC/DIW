@@ -1,3 +1,5 @@
+import Header from "./Header.js";
+
 const { createApp } = Vue;
 
 var app = createApp({
@@ -9,11 +11,14 @@ var app = createApp({
                 content: '',
                 author: '',
                 date: '',
-                //src_image: '',
+                src_image: '',
                 isEdit: 'false'
             },
             posts: [] // Array per guardar els posts creats
         };
+    },
+    components:{
+        Header
     },
     methods: {
         sendForm() { //Guardem la información dins de l'array
@@ -40,7 +45,7 @@ var app = createApp({
         this.form.summary = '';
         this.form.content = '';
         this.form.author = '';
-        //this.$refs.fileInput.value = null;
+        this.$refs.fileInput.value = null;
         
         
         },
