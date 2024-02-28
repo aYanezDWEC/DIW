@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VueJs Conditional rendering</title>
+    <title>VueJs component example</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
   </head>
   <body>    
-    <div id = "app">
-      <button v-on:click="showdata" v-bind:style="styleobj">Click Me</button>
-      <span style="font-size:25px;"><b>{{ show }}</b></span>
-      <h1 v-if="show">This is h1 tag</h1>
-      <h2 v-else>This is h2 tag</h2>
-      <div v-show="show">
-        <b>V-Show:</b>
-        <img src = "img.jpg" width = "150" height = "100" />
-      </div>
+    <div id="app">  
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>              
     </div>
+
+    <script type="text/x-template" id="button-counter-template">
+      <!-- <p>The count is</p>
+      <button v-on:click="count++">{{ count }}</button> -->
+      <button v-on:click="count++">You clicked me {{ count }} times.</button>
+    </script>
 
     <script>
       const { createApp } = Vue;
 
-      var app = createApp({
+      const ButtonCounter = {
         data() {
           return {
-            show: true,
-            styleobj: {
-              backgroundColor: '#2196F3!important',
-              cursor: 'pointer',
-              padding: '8px 16px',
-              verticalAlign: 'middle',
-              marginRight: '10px',
-            }
+            count: 0
           }
         },
-        methods: {
-          showdata: function() {
-            this.show = !this.show;
-          }
-        }
-      }).mount('#app');        
+        template: '#button-counter-template'
+      };
+     
+      const app = createApp({
+        components: {
+          ButtonCounter,
+        },
+      }).mount('#app'); 
+             
     </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+    </style>
   </body>   
 </html>

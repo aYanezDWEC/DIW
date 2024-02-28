@@ -5,12 +5,8 @@ body {
     background-color: #1f1d1d; 
     color: #fff; 
 }
-/* 
-h1{
-    color: #4a007c;
-}
-   */
-#app {
+
+#content {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -28,7 +24,7 @@ label {
 }
   
   input[type="text"],
-  textarea, select, #image {
+  textarea, select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -38,6 +34,9 @@ label {
     background-color: #555; 
     color: #fff; 
 }
+
+
+
   
 .btn_send {
     padding: 10px 20px;
@@ -103,3 +102,81 @@ label {
     font-weight: bold;
   }
   
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+
+
+.header-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+
+a{
+    color: #854db2;
+    margin: 30px;
+    text-decoration: none;
+}
+
+
+a:hover{
+    color: #6d26a8;
+    
+}
+
+.header-navigation ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.header-navigation ul li:last-child {
+
+    margin-right: 0;
+}
+
+.header-navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
