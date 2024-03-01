@@ -10,7 +10,6 @@ export default{
         <p><strong>Author:</strong> {{ post.author }}</p>
         <p><strong>Date:</strong> {{ post.date }}</p>
         <button class="btn_delete" v-on:click = "$emit('delete-post', post.idPost)"> DELETE </button>
-        <button class="btn_edit" v-on:click = "$emit('edit-post', post)"> EDIT </button>
-        
+        <button class="btn_edit" v-on:click = "$emit('edit-post', post)"> EDIT </button>       
     </div>`,
 }
