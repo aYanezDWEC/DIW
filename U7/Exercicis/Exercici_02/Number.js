@@ -9,6 +9,6 @@ export default{
     template: `
         <div> 
             <input type="button" v-bind:value="nombre" @click="clickNumber(nombre)">
-        </div>
+        </div> <br>
     `,
 }

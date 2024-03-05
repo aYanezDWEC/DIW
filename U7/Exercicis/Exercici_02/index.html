@@ -11,12 +11,16 @@
         <h3>Enter an integer</h3>
         <input v-model="num" type="number">
         <input type="button" value="SEND" v-on:click="send()">
-        <p v-if="error">
+        <p v-if="error"> <!-- Si no se pone el xif hace el mismo efecto-->
             <small >{{ error }}</small>
         </p >
+        
+        
+        <h3>{{ list }}</h3>
 
-        <Number v-for="n in numbers" :nombre="n" :key="n" v-on:clicked-number="numberSelected"></Number>
-
+        <Number v-for="n in numbers" :nombre="n" :key="n" v-on:clicked-number="numberSelected">
+          
+        </Number>
         <p v-if="selectedItem">
             <span>The number pressed is {{ selectedItem }}</span>
         </p >
@@ -32,7 +36,8 @@
                     num: null,
                     numbers: [],
                     error: "",
-                    selectedItem: null
+                    selectedItem: null,
+                    list: ''
                 }
             },
             components:{
@@ -45,11 +50,13 @@
                     // console.log('okdix');
                     //Eliminar decimals i comprovar si és igual al valor entrat
                     // si s'entra en un string o retorna 0
-                    if(~~this.num === this.num){
+                    if(~~this.num === this.num){ //Comprova si el nombre és decimal nombre sigui decimal 
                         //Comprovar si existeix aquest nombre a l'array/llistax
                         if(this.numbers.indexOf(this.num)<0){
+                            //Si no existeix el nombre el fiquem en l'array
                             this.numbers.push(this.num);
-                        } else {
+                            this.list = 'LIST OF NUMBERS';
+                        } else { //Si existeix no poot possar un nombre
                             this.error = "You can't repeat numbers."
                         }
                     } else{

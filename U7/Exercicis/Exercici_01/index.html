@@ -35,11 +35,11 @@
             </select>
 
             <label for="image">Image:</label>
-            <input type="file" ref="fileInput" id="image" @change="handleFileChange"><br>
+            <input type="file" ref="fileInput" id="image"><br>
 
             
             <button @click="sendForm" class="btn_send">Send</button>
-            <button @click="editPost" hidden>Send</button>
+            
          
             <div v-for="(post, index) in posts" :key="index">
               <h3>{{ post.title }}</h3>
@@ -48,7 +48,7 @@
               <p><strong>Author:</strong> {{ post.author }}</p>
               <p><strong>Image:</strong> {{ post.image }}</p>
               <p><strong>Date:</strong> {{ post.date }}</p>
-              <p><button class="btn_delete" v-on:click = 'deletePost(index)'> DELETE </button>
+              <p><button class="btn_delete" @click = 'deletePost(index)'> DELETE </button>
               <button class="btn_edit" v-on:click = 'editPost(post, index)'> EDIT </button></p>
             </div>
         </div>

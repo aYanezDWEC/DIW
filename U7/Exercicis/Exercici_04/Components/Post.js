@@ -1,10 +1,6 @@
 export default {
     name: 'Post',
-    data() {
-        return {
-            post: null
-        };
-    },
+    props:['posts'],
     mounted() {
         // Obtenemos el ID del post de la ruta
         const postId = this.$route.params.id;
@@ -13,14 +9,17 @@ export default {
         this.post = posts.find(post => post.idPost === postId);
     },
     template: `
-    <div v-if="post">
-        <h2>{{ post.title }}</h2>
-        <p><strong>Summary:</strong> {{ post.summary }}</p>
-        <p><strong>Content:</strong> {{ post.content }}</p>
-        <p><strong>Author:</strong> {{ post.author }}</p>
-        <p><strong>Date:</strong> {{ post.date }}</p>
-        <button class="btn_delete" v-on:click="deletePost(post.idPost)"> DELETE </button>
-        <button class="btn_edit" v-on:click="editPost(post)"> EDIT </button>
+  
+    <div v-if="posts">
+        <div v-for="post in posts">
+            <h2>{{ post.title }}</h2>
+            <p><strong>Summary:</strong> {{ post.summary }}</p>
+            <p><strong>Content:</strong> {{ post.content }}</p>
+            <p><strong>Author:</strong> {{ post.author }}</p>
+            <p><strong>Date:</strong> {{ post.date }}</p>
+            <button class="btn_delete" @click="deletePost(post.idPost)">DELETE</button>
+            <button class="btn_edit" @click="editPost(post)">EDIT</button>
+        </div>
     </div>
     `,
     methods: {
@@ -32,7 +31,9 @@ export default {
             this.$router.push('/');
         },
         editPost(post) {
-            // Implementa la lógica de edición si es necesario
         }
     }
 }
+
+
+

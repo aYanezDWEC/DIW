@@ -1,6 +1,8 @@
 import HeaderPost from "./Components/Header.js";
 import FooterPost from "./Components/Footer.js";
 import BlogPost from "./Components/Post.js";
+import Post from "./Components/Post.js";
+import router from "./router.js";
 
 //Aconseguim el darrer id que hi ha guardat enel localstorage i si no hi ha cap guardat possará 0
 var id = JSON.parse(localStorage.getItem('lastId')) || 0;
@@ -26,7 +28,8 @@ var app = createApp({
     components:{
         HeaderPost,
         FooterPost,
-        BlogPost
+        BlogPost, 
+        Post
     },
     methods: {
         /* The `sendForm()` method in the provided JavaScript code is responsible for handling the form
@@ -102,16 +105,13 @@ var app = createApp({
             localStorage.setItem('posts', JSON.stringify(this.posts));
         },
     }, 
-   /**
-    * The mounted function checks if there are posts in the local storage and parses them if they
-    * exist.
-    */
+
     mounted(){
+        this.$router.push({ name: 'home' });
+
+
         if(localStorage.getItem('posts')){
             this.posts = JSON.parse(localStorage.getItem('posts'));
         }
     }
-});
-
-app.use(router);
-mount('#app')
+}).use(router).mount('#app');

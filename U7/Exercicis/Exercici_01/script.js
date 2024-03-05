@@ -35,20 +35,19 @@ var app = createApp({
         //Afegim el objecte dins de l'array
         this.posts.push(newPost);
 
-        // Llevam tot el que hi ha en el formulari
+        // // Llevam tot el que hi ha en el formulari
         this.form.title = '';
         this.form.summary = '';
         this.form.content = '';
         this.form.author = '';
         //this.$refs.fileInput.value = null;
+    
         
-        
-        },
-        deletePost: function(index){
+        }, 
+        deletePost(index){
             this.posts.splice(index, 1);
         },
-        editPost: function(post, index){
-            //Per a que no fagi dues còpies del mateix post, quan pitjem el botó de editar eliminarem el post de l'array de posts
+        editPost: function(post, index){  //Per a que no fagi dues còpies del mateix post, quan pitjem el botó de editar eliminarem el post de l'array de posts
             this.form.title = post.title;
             this.form.summary = post.summary;
             this.form.content = post.content;
